@@ -51,6 +51,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -58,5 +59,4 @@ group :development do
   gem "web-console"
 end
 
-gem "acts_as_tenant"
-gem "factory_bot_rails"
+gem "activerecord-multi-tenant"

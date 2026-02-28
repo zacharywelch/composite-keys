@@ -10,8 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_28_182007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "albums", primary_key: ["company_id", "id"], force: :cascade do |t|
+    t.bigserial "id", null: false
+    t.string "name"
+    t.bigint "company_id", null: false
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "artist_id"], name: "index_albums_on_company_id_and_artist_id"
+    t.index ["company_id"], name: "index_albums_on_company_id"
+  end
+
+  create_table "artists", primary_key: ["company_id", "id"], force: :cascade do |t|
+    t.bigserial "id", null: false
+    t.string "name"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_artists_on_company_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "songs", primary_key: ["company_id", "id"], force: :cascade do |t|
+    t.bigserial "id", null: false
+    t.string "name"
+    t.bigint "company_id", null: false
+    t.bigint "album_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "album_id"], name: "index_songs_on_company_id_and_album_id"
+    t.index ["company_id"], name: "index_songs_on_company_id"
+  end
+
+  add_foreign_key "albums", "artists", column: ["company_id", "artist_id"], primary_key: ["company_id", "id"]
+  add_foreign_key "albums", "companies"
+  add_foreign_key "artists", "companies"
+  add_foreign_key "songs", "albums", column: ["company_id", "album_id"], primary_key: ["company_id", "id"]
+  add_foreign_key "songs", "companies"
 end

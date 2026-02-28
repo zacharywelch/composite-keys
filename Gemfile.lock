@@ -53,6 +53,8 @@ GEM
       activemodel (= 8.0.4)
       activesupport (= 8.0.4)
       timeout (>= 0.4.0)
+    activerecord-multi-tenant (2.4.0)
+      rails (>= 6)
     activestorage (8.0.4)
       actionpack (= 8.0.4)
       activejob (= 8.0.4)
@@ -72,8 +74,6 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    acts_as_tenant (1.0.1)
-      rails (>= 6.0)
     addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
@@ -385,7 +385,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  acts_as_tenant
+  activerecord-multi-tenant
   bootsnap
   brakeman
   debug

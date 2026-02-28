@@ -1,9 +1,89 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Company.destroy_all
+
+# == Stellar Records =============================
+
+MultiTenant.current_tenant = Company.create!(name: "Stellar Records")
+
+artist = Artist.create(name: "OMI")
+album = artist.albums.create(name: "Cheerleader (Felix Jaehn Remix Radio Edit)")
+album.songs.create(name: "Cheerleader")
+
+artist = Artist.create(name: "Walk the Moon")
+album = artist.albums.create(name: "Talking is Hard")
+album.songs.create(name: "Different Colors")
+album.songs.create(name: "Sidekick")
+album.songs.create(name: "Shut up and Dance")
+album.songs.create(name: "Up 2 U")
+album.songs.create(name: "Avalanche")
+album.songs.create(name: "Portugal")
+album.songs.create(name: "Down in the Dumps")
+album.songs.create(name: "Work This Body")
+album.songs.create(name: "Spend Your $$$")
+
+artist = Artist.create(name: "Jason Derulo")
+album = artist.albums.create(name: "Everything Is 4")
+album.songs.create(name: "Want to Want Me")
+album.songs.create(name: "Cheyanne")
+album.songs.create(name: "Get Ugly")
+album.songs.create(name: "Pull-Up")
+album.songs.create(name: "Love Like That")
+album.songs.create(name: "Painkiller")
+album.songs.create(name: "Broke")
+album.songs.create(name: "Try Me")
+album.songs.create(name: "Love Me Down")
+album.songs.create(name: "Trade Hearts")
+
+artist = Artist.create(name: "Tove Lo")
+album = artist.albums.create(name: "Queen of the Clouds")
+album.songs.create(name: "The Sex")
+album.songs.create(name: "My Gun")
+album.songs.create(name: "Like Em Young")
+album.songs.create(name: "Talking Body")
+album.songs.create(name: "Timebomb")
+album.songs.create(name: "The Love")
+album.songs.create(name: "Moments")
+album.songs.create(name: "The Way That I Am")
+album.songs.create(name: "Got Love")
+album.songs.create(name: "Not On Drugs")
+album.songs.create(name: "The Pain")
+album.songs.create(name: "Thousand Miles")
+album.songs.create(name: "Habits (Stay High)")
+
+# == Nova Music Group ============================
+
+MultiTenant.current_tenant = Company.create!(name: "Nova Music Group")
+
+artist = Artist.create(name: "Ellie Goulding")
+album = artist.albums.create(name: "Lights")
+album.songs.create(name: "Lights")
+album.songs.create(name: "Guns and Horses")
+album.songs.create(name: "Starry Eyed")
+album.songs.create(name: "This Love (Will Be Your Downfall)")
+album.songs.create(name: "Under the Sheets")
+album.songs.create(name: "The Writer")
+album.songs.create(name: "Animal")
+album.songs.create(name: "Every Time You Go")
+album.songs.create(name: "Your Biggest Mistake")
+album.songs.create(name: "Salt Skin")
+album.songs.create(name: "Your Song")
+
+album = artist.albums.create(name: "Halcyon Days")
+album.songs.create(name: "Don't Say a Word")
+album.songs.create(name: "My Blood")
+album.songs.create(name: "Anything Could Happen")
+album.songs.create(name: "Only You")
+album.songs.create(name: "Halcyon")
+album.songs.create(name: "Figure 8")
+album.songs.create(name: "Joy")
+album.songs.create(name: "Hanging On")
+album.songs.create(name: "Explosions")
+album.songs.create(name: "I Know You Care")
+album.songs.create(name: "Atlantis")
+album.songs.create(name: "I Need Your Love")
+
+artist = Artist.create(name: "Natalie La Rose")
+album = artist.albums.create(name: "Somebody (feat. Jeremih) - Single")
+album.songs.create(name: "Somebody (feat. Jeremih)")
+
+album = artist.albums.create(name: "Around the World (feat. Fetty Wap) - Single")
+album.songs.create(name: "Around the World (feat. Fetty Wap)")
