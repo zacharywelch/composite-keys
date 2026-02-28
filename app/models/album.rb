@@ -1,6 +1,5 @@
 class Album < ApplicationRecord
-  acts_as_tenant :company
+  acts_as_tenant :company, composite_keys: true
   belongs_to :artist
   has_many :songs
-  query_constraints :company_id, :id
 end
